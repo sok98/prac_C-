@@ -1,4 +1,4 @@
-# prac_C-
+# prac_C#
 📖 C# 연습
 
 https://cwkcw.tistory.com/
