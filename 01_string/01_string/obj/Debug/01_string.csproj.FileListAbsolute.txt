@@ -1,1 +1,9 @@
 C:\prac_c#\01_string\01_string\bin\Debug\01_string.exe.config
+C:\prac_c#\01_string\01_string\bin\Debug\01_string.exe
+C:\prac_c#\01_string\01_string\bin\Debug\01_string.pdb
+C:\prac_c#\01_string\01_string\obj\Debug\01_string.csprojResolveAssemblyReference.cache
+C:\prac_c#\01_string\01_string\obj\Debug\_01_string.Form1.resources
+C:\prac_c#\01_string\01_string\obj\Debug\_01_string.Properties.Resources.resources
+C:\prac_c#\01_string\01_string\obj\Debug\01_string.csproj.GenerateResource.Cache
+C:\prac_c#\01_string\01_string\obj\Debug\01_string.exe
+C:\prac_c#\01_string\01_string\obj\Debug\01_string.pdb
