@@ -67,10 +67,12 @@ namespace _02_datatype
 
             if (short.TryParse(inputNum.Text, out sNum))
                 lblShort.Text = sNum.ToString();
-            if (int.TryParse(inputNum.Text, out iNum))
+            else if (int.TryParse(inputNum.Text, out iNum))
                 lblInt.Text = iNum.ToString();
-            if (double.TryParse(inputNum.Text, out dNum))
+            else if (double.TryParse(inputNum.Text, out dNum))
                 lblDouble.Text = dNum.ToString();
+            else
+                lblException.Text = "변환할 수 없음";
         }
     }
 }
