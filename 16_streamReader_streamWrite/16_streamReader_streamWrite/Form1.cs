@@ -90,10 +90,14 @@ namespace _16_streamReader_streamWrite
 
         private void btnConfigLoad_Click(object sender, EventArgs e)
         {
-            string[] strConfig = tboxConfigData.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            tboxData.Text = strConfig[0];
-            cboxData.Checked = bool.Parse(strConfig[1]);
-            numData.Value = int.Parse(strConfig[2]);
+            if (tboxConfigData.Text != "")
+            {
+                string[] strConfig = tboxConfigData.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                tboxData.Text = strConfig[0];
+                cboxData.Checked = bool.Parse(strConfig[1]);
+                numData.Value = int.Parse(strConfig[2]);
+            }
+
         }
     }
 }
