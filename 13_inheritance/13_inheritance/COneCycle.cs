@@ -9,8 +9,8 @@ namespace _13_inheritance
 {
     class COneCycle : CBase
     {
-        public Rectangle _rtSquare1;    // 몸통
-        public Rectangle _rtCircle1;    // 바퀴
+        public Rectangle _rtSquare1;    // 몸통1
+        public Rectangle _rtCircle1;    // 바퀴1
 
         public COneCycle(string sName)
         {
@@ -26,11 +26,23 @@ namespace _13_inheritance
             return _pen;
         }
 
+        public Pen penInfo(Color oColor)
+        {
+            _pen = new Pen(oColor);
+            return _pen;
+        }
+
+            public Pen penInfo(Color oColor, int w)
+        {
+            _pen = new Pen(oColor, w);
+            return _pen;
+        }
+
         /// <summary>
         /// 외부에서 호출 가능하도록 
         /// </summary>
         /// <param name="iMove"></param>
-        public void fMove(int iMove)
+        public virtual void fMove(int iMove)
         {
             fCircle1Move(iMove);
             fSquare1Move(iMove);

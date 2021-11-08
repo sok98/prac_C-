@@ -28,6 +28,18 @@ namespace _13_inheritance
             c3 = new CCar("자동차");
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+           if (e.KeyCode == Keys.Q)
+            {
+                fMoveing(-5);
+            }else if (e.KeyCode == Keys.W)
+            {
+                fMoveing(5);
+            }
+        }
+
+
         private void btnOneCycle_Click(object sender, EventArgs e)
         {
             fClearPanel();
@@ -100,39 +112,30 @@ namespace _13_inheritance
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            fClearPanel();
-            switch (lblName.Text)
-            {
-                case "외발 자전거":
-                    c1.fMove(-5);
-                    OneCycleDraw();
-                    break;
-                case "자전거":
-                    c2.fMove(-5);
-                    CCycleDraw();
-                    break;
-                case "자동차":
-                    c3.fMove(-5);
-                    CCarDraw();
-                    break;
-            }
+            fMoveing(-5);
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
+            fMoveing(5);
+        }
+
+        private void fMoveing(int s)
+        {
             fClearPanel();
+
             switch (lblName.Text)
             {
                 case "외발 자전거":
-                    c1.fMove(5);
+                    c1.fMove(s);
                     OneCycleDraw();
                     break;
                 case "자전거":
-                    c2.fMove(5);
+                    c2.fMove(s);
                     CCycleDraw();
                     break;
                 case "자동차":
-                    c3.fMove(5);
+                    c3.fMove(s);
                     CCarDraw();
                     break;
             }

@@ -9,7 +9,7 @@ namespace _13_inheritance
 {
     class CCar : CCycle
     {
-        public Rectangle _rtSquare2;  // 몸통
+        public Rectangle _rtSquare2;  // 몸통2
 
         public CCar(string sName) : base(sName)
         {
@@ -22,12 +22,9 @@ namespace _13_inheritance
             _rtCircle2 = new Rectangle(210,180,90,90);
         }
 
-        public new void fMove(int iMove)
+        public override void fMove(int iMove)
         {
-            fCircle1Move(iMove);
-            fCircle2Move(iMove);
-            fSquare1Move(iMove);
-
+            base.fMove(iMove);
             fSquare2Move(iMove);
         }
 

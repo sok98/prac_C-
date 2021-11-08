@@ -1,4 +1,7 @@
-﻿namespace _13_inheritance
+﻿using System;
+using System.Windows.Forms;
+
+namespace _13_inheritance
 {
     partial class Form1
     {
@@ -118,13 +121,16 @@
             this.Controls.Add(this.btnOneCycle);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.pMain);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += Form1_KeyDown;
             this.ResumeLayout(false);
 
         }
 
+       
         #endregion
 
         private System.Windows.Forms.Panel pMain;
