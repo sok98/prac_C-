@@ -13,6 +13,9 @@ namespace _16_streamReader_streamWrite
 {
     public partial class Form1 : Form
     {
+        XMLControl _XML = new XMLControl();
+        Dictionary<string, string> _dData = new Dictionary<string, string>();
+
         public Form1()
         {
             InitializeComponent();
@@ -34,6 +37,11 @@ namespace _16_streamReader_streamWrite
 
             tboxConfigData.Text = sb.ToString();
 
+            _dData.Clear();
+            _dData.Add(XMLControl._TEXT_DATA, strText);
+            _dData.Add(XMLControl._CBOX_DATA, bChecked.ToString());
+            _dData.Add(XMLControl._NUMBER_DATA, iNumber.ToString());
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -41,8 +49,8 @@ namespace _16_streamReader_streamWrite
             string strFilePath = string.Empty;
 
             SFDialog.InitialDirectory = Application.StartupPath;    // 프로그램 실행 파일 위치
-            SFDialog.FileName = "*.txt";    // 파일 이름
-            SFDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";    // 파일 형식
+            SFDialog.FileName = "*.xml";    // 파일 이름
+            SFDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";    // 파일 형식
 
             if (SFDialog.ShowDialog() == DialogResult.OK)
             {
@@ -53,7 +61,9 @@ namespace _16_streamReader_streamWrite
                 //swSFDialog.WriteLine(tboxConfigData.Text);
                 //swSFDialog.Close();
 
-                File.WriteAllText(strFilePath, tboxConfigData.Text);
+                //File.WriteAllText(strFilePath, tboxConfigData.Text);
+
+                _XML.fXML_Writer(strFilePath, _dData);
             }
 
         }
@@ -63,8 +73,8 @@ namespace _16_streamReader_streamWrite
             string strFilePath = string.Empty;
 
             OFDialog.InitialDirectory = Application.StartupPath;    // 프로그램 실행 파일 위치
-            OFDialog.FileName = "*.txt";    // 파일 이름
-            OFDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";    // 파일 형식
+            OFDialog.FileName = "*.xml";    // 파일 이름
+            OFDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";    // 파일 형식
 
             StringBuilder sb = new StringBuilder();
 
@@ -85,6 +95,9 @@ namespace _16_streamReader_streamWrite
                 sb.Append(File.ReadAllText(strFilePath));
 
                 tboxConfigData.Text = sb.ToString();
+
+                _dData.Clear();
+                _dData = _XML.fXML_Reader(strFilePath);
             }
         }
 
