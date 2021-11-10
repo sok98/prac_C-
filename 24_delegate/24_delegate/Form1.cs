@@ -14,6 +14,8 @@ namespace _24_delegate
     {
         public delegate int delFunc_Dow_Edge(int i);
         public delegate int delFunc_Topping(string s, int i);
+
+        Dictionary<string, int> _dPizzaOrder = new Dictionary<string, int>();
         int _totalPrice = 0;
 
         public Form1()
@@ -55,6 +57,8 @@ namespace _24_delegate
             lboxOrder.Items.Add("-------------------------------");
             lboxOrder.Items.Add($"총 가격 : {_totalPrice} 원");
             lboxOrder.Items.Add("-------------------------------");
+
+            formLoading();
         }
 
         #region Function
@@ -71,11 +75,13 @@ namespace _24_delegate
             if (iOrder == 1)
             {
                 iPrice = 10000;
+                _dPizzaOrder.Add("오리지널", 1);
                 strOrder = string.Format("도우 : 오리지널 ({0}원)", iPrice);
             }
             else if (iOrder == 2)
             {
                 iPrice = 11000;
+                _dPizzaOrder.Add("씬", 1);
                 strOrder = string.Format("도우 : 씬 ({0}원)", iPrice);
             }
             else
@@ -101,11 +107,13 @@ namespace _24_delegate
             if (iOrder == 1)
             {
                 iPrice = 1000;
+                _dPizzaOrder.Add("리치골드", 1);
                 strOrder = string.Format("엣지 : 리치골드 ({0}원)", iPrice);
             }
             else if (iOrder == 2)
             {
                 iPrice = 2000;
+                _dPizzaOrder.Add("치즈크러스트", 1);
                 strOrder = string.Format("엣지 : 치즈크러스트 ({0}원)", iPrice);
             }
             else
@@ -129,6 +137,7 @@ namespace _24_delegate
             string strOrder = string.Empty;
             int iPrice = iEa * 500;
 
+            _dPizzaOrder.Add("소세지", iEa);
             strOrder = string.Format("{0} : 소세지 {1}개 선택 -> {2}원 (1EA 500원)", Order, iEa, iPrice);
 
             flboxOrderAdd(strOrder);
@@ -147,6 +156,7 @@ namespace _24_delegate
             string strOrder = string.Empty;
             int iPrice = iEa * 200;
 
+            _dPizzaOrder.Add("감자", iEa);
             strOrder = string.Format("{0} : 감자 {1}개 선택 -> {2}원 (1EA 200원)", Order, iEa, iPrice);
 
             flboxOrderAdd(strOrder);
@@ -165,6 +175,7 @@ namespace _24_delegate
             string strOrder = string.Empty;
             int iPrice = iEa * 300;
 
+            _dPizzaOrder.Add("치즈", iEa);
             strOrder = string.Format("{0} : 치즈 {1}개 선택 -> {2}원 (1EA 300원)", Order, iEa, iPrice);
 
             flboxOrderAdd(strOrder);
@@ -181,6 +192,32 @@ namespace _24_delegate
         public int fCallBackDelegate(int i, delFunc_Dow_Edge dFunc)
         {
             return dFunc(i);
+        }
+        #endregion
+
+        #region event
+
+        FormPizza fPizza;
+
+        private void formLoading()
+        {
+            if (fPizza != null)
+            {
+                fPizza.Dispose();
+                fPizza = null;
+            }
+
+            fPizza = new FormPizza();
+            fPizza.eventdelPizzaComplete += FPizza_eventdelPizzaComplete;
+            fPizza.Show();
+            fPizza.fPizzaCheck(_dPizzaOrder);
+        }
+
+        private int FPizza_eventdelPizzaComplete(string strResult, int iTime)
+        {
+            lboxOrder.Items.Add($"{strResult} / 걸린 시간 : {iTime}");
+
+            return 0;
         }
         #endregion
     }
