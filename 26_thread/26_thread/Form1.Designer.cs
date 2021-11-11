@@ -112,8 +112,11 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayer)).EndInit();
             this.ResumeLayout(false);
+            this.FormClosing += Form1_FormClosing;
 
         }
+
+       
 
         #endregion
 

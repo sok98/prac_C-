@@ -24,11 +24,21 @@ namespace _26_thread
         int _locationX = 0;
         int _locationY = 0;
 
+        List<Play> lPlay = new List<Play>();
+
         public Form1()
         {
             InitializeComponent();
             _locationX = this.Location.X;
             _locationY = this.Location.Y;
+        }
+
+        private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            foreach (Play oPlayForm in lPlay)
+            {
+                oPlayForm.ThreadAbort();    // 프로그램 종료 시점이라서 강제로 Thread 해제
+            }
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -44,6 +54,8 @@ namespace _26_thread
 
                 pl.Show();
                 pl.fThreadStart();
+
+                lPlay.Add(pl);
             }
 
 
