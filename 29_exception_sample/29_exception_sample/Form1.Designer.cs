@@ -46,6 +46,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.cdialogColor = new System.Windows.Forms.ColorDialog();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbarAlpha)).BeginInit();
@@ -57,16 +58,16 @@
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 126);
+            this.groupBox1.Size = new System.Drawing.Size(345, 126);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Color Select";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.55072F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.44927F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.95238F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbarAlpha, 1, 1);
@@ -79,7 +80,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(276, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(336, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -89,7 +90,7 @@
             this.label2.Location = new System.Drawing.Point(0, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 33);
+            this.label2.Size = new System.Drawing.Size(63, 33);
             this.label2.TabIndex = 0;
             this.label2.Text = "Alpha : ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -101,18 +102,21 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 33);
+            this.label1.Size = new System.Drawing.Size(63, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Color : ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbarAlpha
             // 
-            this.tbarAlpha.Location = new System.Drawing.Point(64, 33);
+            this.tbarAlpha.Location = new System.Drawing.Point(63, 33);
             this.tbarAlpha.Margin = new System.Windows.Forms.Padding(0);
+            this.tbarAlpha.Maximum = 255;
             this.tbarAlpha.Name = "tbarAlpha";
             this.tbarAlpha.Size = new System.Drawing.Size(91, 33);
             this.tbarAlpha.TabIndex = 2;
+            this.tbarAlpha.Value = 255;
+            this.tbarAlpha.Scroll += new System.EventHandler(this.tbarAlpha_Scroll);
             // 
             // label3
             // 
@@ -121,7 +125,7 @@
             this.label3.Location = new System.Drawing.Point(0, 66);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 34);
+            this.label3.Size = new System.Drawing.Size(63, 34);
             this.label3.TabIndex = 3;
             this.label3.Text = "Text : ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -130,40 +134,44 @@
             // 
             this.lblColorInfo.AutoSize = true;
             this.lblColorInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblColorInfo.Location = new System.Drawing.Point(64, 66);
+            this.lblColorInfo.Location = new System.Drawing.Point(63, 66);
             this.lblColorInfo.Margin = new System.Windows.Forms.Padding(0);
             this.lblColorInfo.Name = "lblColorInfo";
-            this.lblColorInfo.Size = new System.Drawing.Size(212, 34);
+            this.lblColorInfo.Size = new System.Drawing.Size(273, 34);
             this.lblColorInfo.TabIndex = 4;
             this.lblColorInfo.Text = "Color [A=0, R=0, G=0, B=0]";
             this.lblColorInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pColor
             // 
+            this.pColor.BackColor = System.Drawing.Color.Black;
             this.pColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pColor.Location = new System.Drawing.Point(71, 5);
+            this.pColor.Location = new System.Drawing.Point(70, 5);
             this.pColor.Margin = new System.Windows.Forms.Padding(7, 5, 5, 5);
             this.pColor.Name = "pColor";
             this.pColor.Size = new System.Drawing.Size(74, 23);
             this.pColor.TabIndex = 1;
+            this.pColor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pColor_MouseClick);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(141, 144);
+            this.btnSave.Location = new System.Drawing.Point(195, 144);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "저장";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(222, 144);
+            this.btnDelete.Location = new System.Drawing.Point(276, 144);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "삭제";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lboxColor
             // 
@@ -171,18 +179,20 @@
             this.lboxColor.ItemHeight = 15;
             this.lboxColor.Location = new System.Drawing.Point(12, 173);
             this.lboxColor.Name = "lboxColor";
-            this.lboxColor.Size = new System.Drawing.Size(285, 154);
+            this.lboxColor.Size = new System.Drawing.Size(339, 154);
             this.lboxColor.TabIndex = 3;
+            this.lboxColor.SelectedIndexChanged += new System.EventHandler(this.lboxColor_SelectedIndexChanged);
             // 
             // pBackground
             // 
+            this.pBackground.BackgroundImage = global::_29_exception_sample.Properties.Resources.Back;
             this.pBackground.Controls.Add(this.panel6);
             this.pBackground.Controls.Add(this.panel5);
             this.pBackground.Controls.Add(this.panel4);
             this.pBackground.Controls.Add(this.panel2);
             this.pBackground.Controls.Add(this.panel3);
             this.pBackground.Controls.Add(this.panel1);
-            this.pBackground.Location = new System.Drawing.Point(303, 21);
+            this.pBackground.Location = new System.Drawing.Point(363, 21);
             this.pBackground.Name = "pBackground";
             this.pBackground.Size = new System.Drawing.Size(333, 306);
             this.pBackground.TabIndex = 4;
@@ -195,6 +205,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(65, 132);
             this.panel1.TabIndex = 0;
+            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Click);
             // 
             // panel2
             // 
@@ -204,6 +215,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(127, 96);
             this.panel2.TabIndex = 1;
+            this.panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Click);
             // 
             // panel3
             // 
@@ -213,6 +225,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(123, 100);
             this.panel3.TabIndex = 2;
+            this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Click);
             // 
             // panel4
             // 
@@ -222,6 +235,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(123, 53);
             this.panel4.TabIndex = 2;
+            this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Click);
             // 
             // panel5
             // 
@@ -231,21 +245,23 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(72, 76);
             this.panel5.TabIndex = 2;
+            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Click);
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Location = new System.Drawing.Point(247, 179);
+            this.panel6.Location = new System.Drawing.Point(227, 186);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(50, 78);
             this.panel6.TabIndex = 2;
+            this.panel6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 339);
+            this.ClientSize = new System.Drawing.Size(708, 339);
             this.Controls.Add(this.pBackground);
             this.Controls.Add(this.lboxColor);
             this.Controls.Add(this.btnDelete);
@@ -282,6 +298,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ColorDialog cdialogColor;
     }
 }
 
