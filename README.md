@@ -31,6 +31,7 @@ https://cwkcw.tistory.com/
 26. Thread
 27. Thread의 종료
 28. 예외처리 (Exception)
-29. 사용자 정의 컨트롤 (UserControl)
-30. 람다식 (Lambda)
-31. 링큐(Linq)
+29. 예외처리 샘플 (Exception Sample)
+30. 사용자 정의 컨트롤 (UserControl)
+31. 람다식 (Lambda)
+32. 링큐(Linq)
